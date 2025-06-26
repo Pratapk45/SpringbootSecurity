@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @GetMapping("/hello")
+    @GetMapping("/helloo")
     public String firstApi(HttpServletRequest request){
         return "Welcome to Pratap "+request.getSession().getId();
     }

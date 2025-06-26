@@ -15,17 +15,7 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentService studentService;
-//    private List<Student> students = new ArrayList<>(
-//            List.of(
-//                    new Student(1, "Navin", 60),
-//                    new Student(2, "Kiran", 65)
-//            ));
 
-//
-//    @GetMapping("/students")
-//    public List<Student> getStudents() {
-//        return students;
-//    }
 
     @GetMapping("/csrf-token")
     public CsrfToken getCsrfToken(HttpServletRequest request) {
@@ -43,4 +33,16 @@ public class StudentController {
     public List<Student> getStudents() {
         return studentService.getStudents();
     }
+
+    //    private List<Student> students = new ArrayList<>(
+//            List.of(
+//                    new Student(1, "Navin", 60),
+//                    new Student(2, "Kiran", 65)
+//            ));
+
+//
+//    @GetMapping("/students")
+//    public List<Student> getStudents() {
+//        return students;
+//    }
 }
