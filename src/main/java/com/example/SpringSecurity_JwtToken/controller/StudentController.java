@@ -1,5 +1,6 @@
 package com.example.SpringSecurity_JwtToken.controller;
 
+import com.example.SpringSecurity_JwtToken.dao.StudentDao;
 import com.example.SpringSecurity_JwtToken.modules.Student;
 import com.example.SpringSecurity_JwtToken.service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,13 +24,13 @@ public class StudentController {
 
     }
 
-    @PostMapping("/students")
-    public Student addStudent(@RequestBody Student student) {
+    @PostMapping("/add")
+    public Student addStudent(@RequestBody StudentDao studentDao) {
 
-        return studentService.addStudent(student);
+        return studentService.addStudent(studentDao);
     }
 
-    @GetMapping("/students")
+    @GetMapping("/get")
     public List<Student> getStudents() {
         return studentService.getStudents();
     }

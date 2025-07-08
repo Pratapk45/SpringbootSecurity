@@ -20,9 +20,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.csrf(csrf -> csrf.disable()).
-                authorizeHttpRequests(request -> request.
-                        requestMatchers("/User/register").permitAll().
-                        anyRequest().authenticated()).
+                authorizeHttpRequests(request -> request
+                        .requestMatchers("/User/register")
+                        .permitAll()
+                        .requestMatchers("/Student/add").hasRole("USER")
+                        .requestMatchers("/Student/get").hasRole("ADMIN")
+                        .anyRequest().authenticated()).
                 httpBasic(Customizer.withDefaults()).
                 sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
     }
@@ -32,7 +35,6 @@ public class SecurityConfig {
             DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
             provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
             provider.setUserDetailsService(userDetailsService);
-
 
             return provider;
         }
